@@ -6,7 +6,7 @@ import 'package:mongo_dart/mongo_dart.dart';
 
 final notExistingPacakge = 'not_existing_package';
 final baseDir = path.absolute('unpub-packages');
-final pubHostedUrl = 'http://localhost:4000';
+final pubHostedUrl = 'http://localhost:8080';
 final baseUri = Uri.parse(pubHostedUrl);
 
 final package0 = 'package_0';
@@ -27,7 +27,7 @@ createServer(String opEmail) async {
     overrideUploaderEmail: opEmail,
   );
 
-  var server = await app.serve('0.0.0.0', 4000);
+  var server = await app.serve('0.0.0.0', 8080);
   return server;
 }
 

@@ -10,6 +10,6 @@ main(List<String> args) async {
     packageStore: unpub.FileStore('./unpub-packages'),
   );
 
-  final server = await app.serve('0.0.0.0', 4000);
+  final server = await app.serve('0.0.0.0', 8080);
   print('Serving at http://${server.address.host}:${server.port}');
 }
