@@ -31,7 +31,7 @@ class Utils {
   }();
 
   static Future<HttpServer> bindServer(String host, int port) async {
-    var server = host == 'localhost'
+    var server = host == 'mongo'
         ? await HttpMultiServer.loopback(port)
         : await HttpServer.bind(host, port);
     server.autoCompress = true;

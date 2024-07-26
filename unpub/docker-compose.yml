@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  unpub:
+    build: .
+    environment:
+      - UNPUB_HOST=${UNPUB_HOST}
+      - UNPUB_PORT=${UNPUB_PORT}
+      - MONGODB_URI=${MONGODB_URI}
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:4.2.8
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

@@ -9,7 +9,10 @@
             "cwd": "unpub",
             "request": "launch",
             "type": "dart",
-            "args": ["--database", "mongodb://localhost:27017/dart_pub"],
+            "args": [
+                "--database",
+                "mongodb://mongo:27017/dart_pub"
+            ],
             "program": "bin/unpub.dart",
         },
         {

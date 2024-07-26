@@ -7,9 +7,9 @@ import 'package:unpub/unpub.dart' as unpub;
 main(List<String> args) async {
   var parser = ArgParser();
   parser.addOption('host', abbr: 'h', defaultsTo: '0.0.0.0');
-  parser.addOption('port', abbr: 'p', defaultsTo: '8080');
+  parser.addOption('port', abbr: 'p', defaultsTo: '4000');
   parser.addOption('database',
-      abbr: 'd', defaultsTo: 'mongodb://localhost:27017/dart_pub');
+      abbr: 'd', defaultsTo: 'mongodb://mongo:27017/dart_pub');
   parser.addOption('proxy-origin', abbr: 'o', defaultsTo: '');
 
   var results = parser.parse(args);
@@ -18,7 +18,7 @@ main(List<String> args) async {
   var port = int.parse(results['port'] as String);
   var dbUri = results['database'] ??
       Platform.environment['MONGODB_URI'] ??
-      'mongodb://localhost:27017/dart_pub';
+      'mongodb://mongo:27017/dart_pub';
   var proxy_origin = results['proxy-origin'] as String;
 
   if (results.rest.isNotEmpty) {
@@ -26,7 +26,10 @@ main(List<String> args) async {
     print(parser.usage);
     exit(1);
   }
+  // Wait for 10 seconds before attempting the connection
 
+  print('Wait for 10 seconds before attempting the connection...');
+  await Future.delayed(Duration(seconds: 10));
   final db = Db(dbUri);
   await db.open();
 

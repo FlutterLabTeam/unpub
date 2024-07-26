@@ -5,11 +5,8 @@
     <div class="mask"></div>
     <div class="nav-wrap">
       <div class="nav-header">
-        <a class="logo" [routerLink]="homeUrl"
-          ><img
-            src="https://pub.dev/static/img/pub-dev-logo-2x.png?hash=umitaheu8hl7gd3mineshk2koqfngugi"
-            alt="dart pub logo"
-        /></a>
+        <a class="logo" [routerLink]="homeUrl"><img
+            src="https://flutterlabapps.com/wp-content/uploads/2023/07/logo_white.png" alt="dart pub logo" /></a>
         <div class="_flex-space"></div>
         <button class="close"></button>
       </div>
@@ -20,14 +17,8 @@
   <div class="container">
     <div class="home-banner">
       <form class="search-bar" action="/packages">
-        <input
-          class="input"
-          name="q"
-          placeholder="Search Dart packages"
-          autocomplete="on"
-          autofocus="autofocus"
-          [(ngModel)]="appService.keyword"
-        />
+        <input class="input" name="q" placeholder="Search Dart packages" autocomplete="on" autofocus="autofocus"
+          [(ngModel)]="appService.keyword" />
         <button class="icon" (click)="submit()"></button>
       </form>
     </div>
@@ -38,9 +29,5 @@
 </div>
 <footer class="site-footer" *ngIf="!loading">
   <a class="link" href="https://github.com/bytedance/unpub">Source code</a>
-  <a
-    class="link github_issue"
-    href="https://github.com/bytedance/unpub/issues/new"
-    >Report an issue</a
-  >
+  <a class="link github_issue" href="https://github.com/bytedance/unpub/issues/new">Report an issue</a>
 </footer>

@@ -111,7 +111,7 @@ Future<oauth2.Client> clientWithAuthorization() async {
 
   final completer = Completer();
 
-  final server = await Utils.bindServer('localhost', 43230);
+  final server = await Utils.bindServer('mongo', 43230);
   shelf_io.serveRequests(server, (request) {
     if (request.url.path == 'authorized') {
       /// That's safe.
@@ -128,8 +128,7 @@ Future<oauth2.Client> clientWithAuthorization() async {
     Utils.stdoutPrint('Authorization received, processing...');
 
     /// Redirect to authorized page.
-    final resp =
-        shelf.Response.found('http://localhost:${server.port}/authorized');
+    final resp = shelf.Response.found('http://mongo:${server.port}/authorized');
 
     completer.complete(
         grant.handleAuthorizationResponse(Utils.queryToMap(request.url.query)));
@@ -138,7 +137,7 @@ Future<oauth2.Client> clientWithAuthorization() async {
   });
 
   final authUrl = grant
-          .getAuthorizationUrl(Uri.parse('http://localhost:${server.port}'),
+          .getAuthorizationUrl(Uri.parse('http://mongo:${server.port}'),
               scopes: _scopes)
           .toString() +
       '&access_type=offline&approval_prompt=force';

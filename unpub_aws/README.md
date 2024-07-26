@@ -44,7 +44,7 @@ import 'package:unpub_aws/src/aws_credentials.dart';
 import 'package:unpub_aws/unpub_aws.dart' as unpub_aws;
 
 main(List<String> args) async {
-  final db = Db('mongodb://localhost:27017/dart_pub');
+  final db = Db('mongodb://mongo:27017/dart_pub');
   await db.open(); // make sure the MongoDB connection opened
 
   final app = unpub.App(

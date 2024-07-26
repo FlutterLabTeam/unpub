@@ -1,24 +1,16 @@
-# Use the Dart official image as a base
-FROM dart:stable
+# Etapa de construcción
+FROM dart:stable AS build
 
-# Set the working directory
-WORKDIR /app
-
-# Copy the pubspec files and get dependencies
-COPY pubspec.* ./
-
-# Get dependencies
-RUN dart pub get
-
-# Copy the rest of the application code
+WORKDIR /unpub
 COPY . .
 
-# Ensure the main Dart file is compiled
-RUN dart pub get --offline
+RUN dart pub get
 RUN dart compile exe bin/unpub.dart -o bin/server
 
-# Expose the port the app runs on
-EXPOSE 8080
+# Etapa de producción
+FROM debian:buster-slim
+WORKDIR /unpub
+COPY --from=build /runtime/ /
+COPY --from=build /unpub/bin/server ./bin/server
 
-# Run the compiled server
 CMD ["./bin/server"]

@@ -10,7 +10,7 @@ import 'utils.dart';
 import 'package:unpub/unpub.dart';
 
 main() {
-  Db _db = Db('mongodb://localhost:27017/dart_pub_test');
+  Db _db = Db('mongodb://mongo:27017/dart_pub_test');
   late HttpServer _server;
 
   setUpAll(() async {
