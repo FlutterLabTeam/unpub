@@ -3,6 +3,7 @@ import 'package:angular_router/angular_router.dart';
 import 'home_component.template.dart' as home_template;
 import 'list_component.template.dart' as list_template;
 import 'detail_component.template.dart' as detail_template;
+import 'login_component.template.dart' as login_template;
 // import 'not_found_component.template.dart' as not_found_template;
 
 class RoutePaths {
@@ -11,9 +12,15 @@ class RoutePaths {
   static final detail = RoutePath(path: 'packages/:name');
   static final detailVersion =
       RoutePath(path: 'packages/:name/versions/:version');
+  static final login = RoutePath(path: 'login');
 }
 
 class Routes {
+  static final login = RouteDefinition(
+    routePath: RoutePaths.login,
+    component: login_template.LoginComponentNgFactory,
+  );
+
   static final home = RouteDefinition(
     routePath: RoutePaths.home,
     component: home_template.HomeComponentNgFactory,
@@ -32,6 +39,7 @@ class Routes {
   );
 
   static final all = <RouteDefinition>[
+    login,
     home,
     list,
     detail,
